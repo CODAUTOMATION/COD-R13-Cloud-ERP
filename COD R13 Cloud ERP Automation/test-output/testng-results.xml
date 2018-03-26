@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Parallel test suite" duration-ms="220368" started-at="2018-03-07T14:01:23Z" finished-at="2018-03-07T14:05:03Z">
+  <suite name="Parallel test suite" duration-ms="65922" started-at="2018-03-15T13:01:02Z" finished-at="2018-03-15T13:02:08Z">
     <groups>
     </groups>
-    <test name="Chrome Test" duration-ms="220368" started-at="2018-03-07T14:01:23Z" finished-at="2018-03-07T14:05:03Z">
+    <test name="Chrome Test" duration-ms="65922" started-at="2018-03-15T13:01:02Z" finished-at="2018-03-15T13:02:08Z">
       <class name="RunManager.HybridExecuteTest">
-        <test-method status="PASS" signature="runManager(java.lang.String)[pri:0, instance:RunManager.HybridExecuteTest@7ce6a65d]" name="runManager" duration-ms="220339" started-at="2018-03-07T19:31:23Z" finished-at="2018-03-07T19:35:03Z">
+        <test-method status="PASS" signature="runManager(java.lang.String)[pri:0, instance:RunManager.HybridExecuteTest@7ce6a65d]" name="runManager" duration-ms="65851" started-at="2018-03-15T18:31:02Z" finished-at="2018-03-15T18:32:08Z">
           <params>
             <param index="0">
               <value>

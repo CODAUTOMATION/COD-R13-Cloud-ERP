@@ -49,7 +49,6 @@
             <![CDATA[
                  $(document).ready(function() {
                  $(".logo-content").hide(); 
-                 
                  $("#dashboard-view > div.time-totals > div:nth-child(3) > div").hide(); 
                  $(".logo-container").html("Automation Log");
                  $("#dashboard-view > div.time-totals > div:nth-child(1) > div > span.panel-name").html("Total Tests Count");
@@ -58,9 +57,17 @@
                  $("#dashboard-view > div.time-totals > div.col.l2.m4.s6.suite-end-time > div > span.panel-name").html("Test Execution End Time");
                  
                  $("#dashboard-view > div.time-totals > div:nth-child(4) > div > span.panel-name").html("Total Test Cycle Runtime");
+                 $("#dashboard-view > div.charts > div:nth-child(1) > div > div:nth-child(1) > span").html("Test Results Summary View");
+                   $("#dashboard-view > div.charts > div:nth-child(2) > div > div:nth-child(1) > span").html("Test Steps Results Summary View");
+                 $("#dashboard-view > div.charts > div:nth-child(2) > div > div:nth-child(1) > span").html.style.fontSize="x-large";
+                 $("#dashboard-view > div.time-totals > div:nth-child(1) > div > span.panel-name").html.style.fontSize="x-large"
+                   
+                   
                  $("#dashboard-view > div.system-view > div > div > span").html("Environment Details");
-                 $("#dashboard-view > div.system-view > div > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > td:nth-child(1)").hide(); 
-                 $("#dashboard-view > div.system-view > div > div > table > tbody > tr:nth-child(1) > td:nth-child(1)").hide();
+               
+                 
+                 
+                 
                  });
              ]]>
         </scripts>

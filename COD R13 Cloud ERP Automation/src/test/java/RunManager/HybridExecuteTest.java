@@ -35,12 +35,12 @@ public class HybridExecuteTest  {
             if (! myFile.exists() ) {
                 myFile.createNewFile();
                 Global.report = new ExtentReports(Global.filePath, true);
-                
                 Global.report.addSystemInfo("Browser", "Chrome, Version:64.0.3282.186"); //MAHESH
                 Global.report.addSystemInfo("URL", "ebkk-dev2.login.us8.oraclecloud.com");//Mahesh
                 Global.report.addSystemInfo("Host Name", "MAHESHS");
                 Global.report.addSystemInfo("OS", "Windows 7");
                 Global.report.loadConfig(new File(Global.gstrExtentConfigDir + File.separator + "extent-config.xml"));
+                
             }            
             //Read Groups
             String strGroupQuery = "Select * from Groups where Run='Y'";

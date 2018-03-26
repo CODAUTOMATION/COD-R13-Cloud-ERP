@@ -1,7 +1,7 @@
 /*============================================================================================
 Library File Name    :  Utility
-Author               :  Sharad Mali
-Created date         :  23-Sep-2017
+Author               :  
+Created date         :  
 Description          :  It lists the common utility functions that can be used in the scripts.
 ============================================================================================*/
 
@@ -67,11 +67,11 @@ public class Utility  {
 			//driver.get("https://smali:mar-2018@adfs.elliemae.com/adfs/ls/wia");
 			//driver.navigate().to(strVal);
 			waitForPageToLoad();
-			String strDesc = "Browser  '" + strVal + "'  Invoked Successfully.";
+			String strDesc = "Browser  '" + strVal + "'  Invoked Successfully";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Throwable error) {
-			String strDesc = "Timeout waiting for Page Load Request to complete.";
+			String strDesc = "Timeout waiting for Page Load Request to complete";
 			writeHTMLResultLog(strDesc, "fail");			
 			takeScreenShotAndLog("fail");
 			Global.bResult = "False";
@@ -98,7 +98,7 @@ public class Utility  {
 		}		
 		try {
 			waitForPageToLoad();			
-			String strDesc = "Page '" + strLabel + "' is displayed successfully.";
+			String strDesc = "Page '" + strLabel + "' is displayed successfully";
 			writeHTMLResultLog(strDesc, "info");
 			takeScreenShotAndLog("pass");
 			Global.bResult = "True";
@@ -132,12 +132,12 @@ public class Utility  {
 		try {
 			waitForPageToLoad();
 			ng_waitUntilElementVisible(element,20);			
-			ng_waitUntilElementDisplayed(element,20);
+			//ng_waitUntilElementDisplayed(element,20); //mahesh
 			ng_scrollIntoViewElement(element, strLabel);						
 			element.click();
 			if(StringUtils.isNotEmpty(ng_getTextBoxValue(element, strLabel))) {
 				clearTextField(element);
-		    	ng_waitImplicitly(1);		    	
+		    	//ng_waitImplicitly(1);		mahesh    	
 		    	//waitForPageToLoad();
 			}	
 			if(Global.gstrHighlighter == true) {
@@ -149,7 +149,7 @@ public class Utility  {
 			}
 			element.sendKeys(strVal);
 			//waitForPageToLoad();
-			String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox.";
+			String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -178,7 +178,7 @@ public class Utility  {
 			if (strCellData!= null) {
 				return strCellData;
 			}else {
-				String strDesc = "DataValue '" + strKey +  "' not found in Test Data . " ;
+				String strDesc = "DataValue '" + strKey +  "' not found in Test Data" ;
 				writeHTMLResultLog(strDesc, "fail");
 				Global.bResult = "False";
 				Global.objErr = "11";
@@ -222,7 +222,7 @@ public class Utility  {
 			//element.click();
 			//waitForPageToLoad();
 			ng_enterText(element, strLabel, strKey);			
-			ng_waitImplicitly(2);
+			ng_waitImplicitly(1);  //mahesh 2
 			element.sendKeys(Keys.ENTER);
 			waitForPageToLoad();
 			ng_waitImplicitly(2);
@@ -234,13 +234,13 @@ public class Utility  {
 			//WebElement trianglebox = driver.findElement(By.xpath(triangleloc));			
 			triangleloc.click();
 			waitForPageToLoad();
-			ng_waitImplicitly(2);
+			ng_waitImplicitly(1); //mahesh
 			
 			//WebElement dropdownselect = driver.findElement(By.xpath("//span[text()='"+strVal+"']"));
 			WebElement dropdownselect = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='"+strVal+"']")));
 			dropdownselect.click();
 			waitForPageToLoad();	
-			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -278,7 +278,7 @@ public class Utility  {
 			
 			Select objSelect = new Select(element);
 			objSelect.selectByVisibleText(strVal);			
-			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -329,7 +329,7 @@ public class Utility  {
 			WebElement dropdownselect=driver.findElement(By.xpath("//div[contains(@id,'dropdownPopup::dropDownContent')]//span[text()='"+strVal+"']"));
 			dropdownselect.click();
 			
-			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+			String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {
@@ -377,7 +377,7 @@ public class Utility  {
 				js.executeScript(onClickScript,element);
 			}	
 			waitForPageToLoad();
-			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";			
+			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";			
 			writeHTMLResultLog(strDesc, "pass");
 			takeScreenShotAndLog("pass");			
 			Global.bResult = "True";
@@ -543,6 +543,16 @@ public class Utility  {
 		}
     }
     
+    /*----------------------------------------------------------------------------
+	Function Name    	: ng_getTextBoxValue
+	Description     	: Get the text box value
+	Input Parameters 	: 
+	Return Value    	: String
+	Author		        : 
+	Date of creation	:
+	Date of modification:
+	----------------------------------------------------------------------------*/
+    
     public static String ng_getTextBoxValue(WebElement element, String elementDescription) throws Exception {
         String attValue = "";
         ng_scrollIntoViewElement(element, elementDescription);
@@ -652,9 +662,9 @@ public class Utility  {
 			}
 			Actions builder = new Actions(driver);
 			builder.moveToElement(element).click().build().perform();	
-			waitForPageToLoad();
+			waitForPageToLoad();           
 			
-			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";
+			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";			
 		} catch (Exception e) {
@@ -793,7 +803,7 @@ public class Utility  {
 		    //clearTextField(element);
 		    ng_sendTab(element, strLabel);
 		    //waitForPageToLoad();
-		    String strDesc = "Cleared text for " + strLabel + "' textbox.";
+		    String strDesc = "Cleared text for " + strLabel + "' textbox";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";
 		} catch (Exception e) {	
@@ -843,14 +853,14 @@ public class Utility  {
 			waitForPageToLoad();			
 			//explicitWait(element,20);
 			WebElement objElement = wait.until(ExpectedConditions.visibilityOf(element));
-			ng_waitUntilElementDisplayed(objElement,20);
-			ng_scrollIntoViewElement(objElement, strLabel);			
+			//ng_waitUntilElementDisplayed(objElement,20);
+			//ng_scrollIntoViewElement(objElement, strLabel);			
 
 			if(Global.gstrHighlighter == true) {
 				highLighterMethod(objElement);
 			}
 			String value = objElement.getText();
-			String strDesc = "Successfully get the text "+ value +" for '" + strLabel + "'  WebElement.";
+			String strDesc = "Successfully get the text "+ value +" for '" + strLabel + "'  WebElement";
 			writeHTMLResultLog(strDesc, "pass");
 			takeScreenShotAndLog("pass");
 			Global.bResult = "True";					
@@ -863,7 +873,7 @@ public class Utility  {
 		} 		
 		return Global.bResult;
 	}
-    
+
     /*----------------------------------------------------------------------------
    	Function Name    	: explicitWait
    	Description     	: explicit Wait
@@ -988,17 +998,17 @@ public class Utility  {
 			return String.valueOf(true);
 		}
 		try {
-			//waitForPageToLoad();
-			//explicitWait(element,20);
+			waitForPageToLoad();
+			explicitWait(element,20);
 			ng_waitUntilElementDisplayed(element,20);
 			ng_scrollIntoViewElement(element, strLabel);			
-			//ng_waitForElementEnabled(element,20);
+			ng_waitForElementEnabled(element,20);
 			if(Global.gstrHighlighter == true) {
 				highLighterMethod(element);
 			}
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 			waitForPageToLoad();
-			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";
+			String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement";
 			writeHTMLResultLog(strDesc, "pass");
 			Global.bResult = "True";			
 		} catch (Exception e) {
@@ -1254,5 +1264,270 @@ public class Utility  {
          }
          return digits;
      }
+	 /*----------------------------------------------------------------------------
+		Function Name    	: ng_DropDownByIndex
+		Description     	: 
+		Input Parameters 	: strObject - Object Name of Edit Box
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table                        
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_DropDownByIndex(WebElement element,String strLabel, String strKey) throws Exception {
+			String strVal = getTestDataValue(strKey);			
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}	
+			try {
+				waitForPageToLoad();
+				//explicitWait(element, 20);
+				ng_scrollIntoViewElement(element, strLabel);	
+				Select objSelect = new Select(element);
+				int index=Integer.parseInt(strVal);
+				objSelect.selectByIndex(index);		
+				String strDesc = "Value '" + strLabel + "' is selected successfully from '" + strLabel + "' list";
+				writeHTMLResultLog(strDesc, "pass");
+				Global.bResult = "True";
+			} catch (Exception e) {
+				String strDesc = "Items in the  List  "+strLabel + "' are not displayed. Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			} 	
+			return Global.bResult;
+		}
+		
+		
+		/*----------------------------------------------------------------------------
+		Function Name    	: clickWebElement
+		Description     	: This function clicks the WebElement object
+		Input Parameters 	: strObject - Object Name of Web Element
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_clickOk(WebElement element, String strLabel, String strKey) throws Exception {
+			String strVal = getTestDataValue(strKey);
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}
+			try {
+				/*waitForPageToLoad();
+				explicitWait(element,20);
+				ng_waitUntilElementDisplayed(element,20);
+				ng_scrollIntoViewElement(element, strLabel);			
+				ng_waitForElementEnabled(element,20);
+				if(Global.gstrHighlighter == true) {
+					highLighterMethod(element);
+				}*/
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+				//waitForPageToLoad();
+				String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";
+				writeHTMLResultLog(strDesc, "pass");
+				Global.bResult = "True";			
+			} catch (Exception e) {
+				String strDesc = "WebElement '" + strLabel + "' is not displayed on the screen. Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			}			
+			return Global.bResult;
+		}
 			
+		
+		/*----------------------------------------------------------------------------
+	  	Function Name    	: ng_getElementText_PopUp
+	  	Description     	: ng_getElementText
+	  	Input Parameters 	: 
+	  	Return Value    	: 
+	  	Author		        : 
+	  	Date of creation	:
+		Date of modification:
+	  	----------------------------------------------------------------------------*/
+	    public static String ng_getElementText_PopUp(WebElement element, String strLabel, String strKey) throws Exception {
+	    	String strVal = getTestDataValue(strKey);  				 
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}
+			try {			
+				//waitForPageToLoad();		
+				//explicitWait(element,20);mahesh
+				//WebElement objElement = wait.until(ExpectedConditions.visibilityOf(element));
+				//ng_waitUntilElementDisplayed(objElement,20);
+				//ng_scrollIntoViewElement(objElement, strLabel);			
+				String value=(String) ((JavascriptExecutor) driver).executeScript("return arguments[0].text;", element);
+				
+				
+				if(Global.gstrHighlighter == true) {
+					highLighterMethod(element);
+				}
+				//String value = objElement.getText();
+				String strDesc = "Successfully get the text "+ value +" for '" + strLabel + "'  WebElement.";
+				writeHTMLResultLog(strDesc, "pass");
+				takeScreenShotAndLog("pass");
+				Global.bResult = "True";					
+			} catch (Exception e) {
+				String strDesc = "Failed to get the text for  '" + strLabel + " Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			} 		
+			return Global.bResult;
+		}
+	    
+	    /*----------------------------------------------------------------------------
+		Function Name    	: ng_clickSimply
+		Description     	: This function clicks the WebElement object
+		Input Parameters 	: strObject - Object Name of Web Element
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_clickSimply(WebElement element, String strLabel, String strKey) throws Exception {
+			String strVal = Utility.getTestDataValue(strKey);
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}
+			try {		
+				Utility.waitForPageToLoad();								
+				if(Global.gstrHighlighter == true) {
+					Utility.highLighterMethod(element);
+				}			
+				element.click();	
+				Utility.waitForPageToLoad();
+				String strDesc = "Successfully clicked on '" + strLabel + "'  WebElement.";			
+				Utility.writeHTMLResultLog(strDesc, "pass");
+				Utility.takeScreenShotAndLog("pass");			
+				Global.bResult = "True";
+			} catch (Exception e) {
+				String strDesc = "WebElement " + strLabel +  "' is not displayed on the screen. Error Message : " + e.getMessage();
+				Utility.writeHTMLResultLog(strDesc, "fail");
+				Utility.takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			} 								
+			return Global.bResult;
+		}
+		/*----------------------------------------------------------------------------
+		Function Name    	: ng_enterTextDirect
+		Description     	: This function enters a data into a text box
+		Input Parameters 	: strObject - Object Name of Edit Box
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table                        
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_enterTextDirect(WebElement element, String strLabel, String strKey) throws Exception {
+			
+			String strVal = getTestDataValue(strKey);				 
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}	
+			try {
+				waitForPageToLoad();
+				ng_scrollIntoViewElement(element, strLabel);						
+				clearTextField(element);	
+				if(Global.gstrHighlighter == true) {
+					highLighterMethod(element);
+				}	
+				element.sendKeys(strVal);
+				//waitForPageToLoad();
+				String strDesc = "Successfully entered '" + strVal + "' in '" + strLabel + "' textbox.";
+				writeHTMLResultLog(strDesc, "pass");
+				Global.bResult = "True";
+			} catch (Exception e) {
+				String strDesc = "'" + strLabel + "' textbox does not exist. Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			}
+			return Global.bResult;
+		}
+		
+		/*----------------------------------------------------------------------------
+		Function Name    	: ng_SelectListDirect
+		Description     	: 
+		Input Parameters 	: strObject - Object Name of Edit Box
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table                        
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_TypeAndEnter(WebElement element,String strLabel, String strKey) throws Exception {
+			String strVal = getTestDataValue(strKey);	
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}	
+			try {
+				ng_enterTextDirect(element, strLabel, strKey);			
+				ng_waitImplicitly(1);  
+				element.sendKeys(Keys.ENTER);
+				waitForPageToLoad();	
+				String strDesc = "Value '" + strVal + "' is selected successfully from '" + strLabel + "' list.";
+				writeHTMLResultLog(strDesc, "pass");
+				Global.bResult = "True";
+			} catch (Exception e) {
+				String strDesc = "Items in the  List  "+strLabel + "' are not displayed. Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			} 	
+			return Global.bResult;
+		}
+		/*----------------------------------------------------------------------------
+		Function Name    	: ng_enterTextPwd
+		Description     	: This function enters a data into password text box and in reports it hides the string
+		Input Parameters 	: strObject - Object Name of Edit Box
+							: strLabel - To be printed on extent report
+		                    : strKey - Paramiter name to get the data value from TestData Table                        
+		Return Value    	: bResult
+		Author		        : 
+		Date of creation	:
+		Date of modification:
+		----------------------------------------------------------------------------*/
+		public static String ng_enterTextPwd(WebElement element, String strLabel, String strKey) throws Exception {
+			
+			String strVal = getTestDataValue(strKey);				 
+			if ((strVal.contains("SKIP")) || (Global.objErr == "11")) {
+				return String.valueOf(true);
+			}	
+			try {
+				waitForPageToLoad();
+				//ng_scrollIntoViewElement(element, strLabel);						
+				//clearTextField(element);	
+				if(Global.gstrHighlighter == true) {
+					highLighterMethod(element);
+				}	
+				element.sendKeys(strVal);
+				//waitForPageToLoad();
+				String strDesc = "Successfully entered '" + "****" + "' in '" + strLabel + "' textbox.";
+				writeHTMLResultLog(strDesc, "pass");
+				Global.bResult = "True";
+			} catch (Exception e) {
+				String strDesc = "'" + strLabel + "' textbox does not exist. Error Message : " + e.getMessage();
+				writeHTMLResultLog(strDesc, "fail");
+				takeScreenShotAndLog("fail");
+				Global.bResult = "False";
+				Global.objErr = "11";
+			}
+			return Global.bResult;
+		}
+		
 }

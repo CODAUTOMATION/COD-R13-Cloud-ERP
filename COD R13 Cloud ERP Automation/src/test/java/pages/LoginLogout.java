@@ -89,34 +89,8 @@ public class LoginLogout {
 			
 			Utility.ng_verifyPage("Login","LoginCheck");
 			Utility.ng_enterText(edtUserName,"User Name","UserNameSet");
-			Utility.ng_enterText(edtPassword,"Password","PasswordSet");
+			Utility.ng_enterTextPwd(edtPassword,"Password","PasswordSet");
 			Utility.ng_clickWebElement(btnLogIn,"LogIn","LogInClick");	
-			
-		} catch (Exception e) {
-			Global.objErr = "11";			
-		}     
-    }
-    
-    /*----------------------------------------------------------------------------
-    Function Name    	: login
-    Description     	: This function used to login to the application. 
-    Author				:  
-    Date of creation	:
-	Date of modification:   
-    ----------------------------------------------------------------------------*/ 
-    public void login_Move() throws Exception {
-        if(Global.objErr == "11"){
-            return;
-        }   
-    	try {
-			TestData td = new TestData ();
-			Global.objData = (HashMap) td.readTestData (Global.gTCID, Global.gstrClassName, Global.gstrMethodName);	    			
-			Global.test.log(LogStatus.INFO,"Class and Method : "+ Global.gstrClassName +" . "+Global.gstrMethodName);    
-			
-			Utility.ng_verifyPage("Login","LoginCheck");
-			Utility.ng_enterText(edtUserName_Move,"User Name","UserNameSet");
-			Utility.ng_enterText(edtPassword_Move,"Password","PasswordSet");
-			Utility.ng_clickWebElement(btnLogIn_Move,"LogIn","LogInClick");	
 			
 		} catch (Exception e) {
 			Global.objErr = "11";			
